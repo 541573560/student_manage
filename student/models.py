@@ -4,7 +4,7 @@ class student_personal_massage(models.Model):
     student_id = models.CharField(max_length=8)
     name = models.CharField(max_length=10, verbose_name='姓名')
     sex = models.CharField(max_length=10, blank=True, verbose_name='性别')
-    family_address = models.TextField(max_length=50,default=None, blank=True, verbose_name='家庭住址')
+    family_address = models.CharField(max_length=50,default=None, blank=True, verbose_name='家庭住址')
     academy = models.CharField(max_length=15,default=None, blank=True, verbose_name='学院')
     class_num = models.CharField(max_length=100, blank=True, verbose_name='班级')
     train_level = models.CharField(max_length=5,blank=True,verbose_name='学制',help_text='本科/专科')
@@ -41,6 +41,7 @@ class parents(models.Model):
 
 class update_massage(models.Model):
     stu_id = models.CharField(max_length=8)
+    date = models.DateField(auto_now_add=True,auto_created=True)
     living_room = models.CharField(max_length=6,verbose_name='所在宿舍')
     phone_number = models.CharField(max_length=11,verbose_name='电话')
     pareants_single = models.CharField(max_length=2,verbose_name='是/否单亲家庭')
@@ -51,7 +52,7 @@ class update_massage(models.Model):
     party_member_application = models.CharField(max_length=2,verbose_name='是/否递交入党申请书')
     population = models.CharField(max_length=5,verbose_name='家庭人口数')
     poor = models.CharField(max_length=5,verbose_name='家庭是否困难',help_text='是/否')
-    poor_reason = models.TextField(blank=True,verbose_name='困难原因')
+    poor_reason = models.CharField(max_length=50,blank=True,verbose_name='困难原因')
     Instructor = models.CharField(max_length=10,verbose_name='辅导员姓名')
     Instructor_nmber = models.CharField(max_length=11,verbose_name='辅导员电话')
 
@@ -65,11 +66,11 @@ class update_massage(models.Model):
 
 class gratudated_and_employ(models.Model):
     stu_id = models.CharField(max_length=8)
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField(auto_now_add=True,auto_created=True)
     gratudated = models.CharField(max_length=2,verbose_name='是否毕业')
-    gratudated_reason = models.TextField(verbose_name='未毕业原因',default=None,blank=True)
+    gratudated_reason = models.CharField(max_length=200,verbose_name='未毕业原因',default=None,blank=True)
     degree = models.CharField(max_length=2,verbose_name='是否授予学位',default=None,blank=True,help_text='可以不填，以下同上')
-    degree_reason = models.TextField(verbose_name='未授予学位原因',default=None,blank=True)
+    degree_reason = models.CharField(max_length=200,verbose_name='未授予学位原因',default=None,blank=True)
     back_xinjiang = models.CharField(max_length=2,verbose_name='是否返回新疆')
     employ_apartment = models.CharField(max_length=15,verbose_name='就业单位',default=None,blank=True)
     employ_apartment_manager = models.CharField(max_length=5,verbose_name='就业单位联系人',default=None,blank=True)

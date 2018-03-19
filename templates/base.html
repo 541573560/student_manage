@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-han">
-
 <head>
     {% load static %}
 	<title>注册</title>
@@ -74,16 +73,16 @@
 									<a href="index.html" class="effect-3">主页</a>
 								</li>
 								<li>
-									<a href="about.html" class="effect-3">个人信息</a>
+									<a href="#" class="effect-3">个人信息</a>
 								</li>
 								<li>
-									<a href="courses.html" class="effect-3">家庭信息</a>
+									<a href="#" class="effect-3">家庭信息</a>
 								</li>
 								<li>
-									<a href="join.html" class="effect-3">年度信息</a>
+									<a href="#" class="effect-3">年度信息</a>
 								</li>
 								<li>
-									<a href="gallery.html" class="effect-3">毕业就业</a>
+									<a href="#" class="effect-3">毕业就业</a>
 								</li>
 								<!-- <li>
 									<a href="contact.html" class="effect-3">Contact Us</a>
@@ -113,8 +112,8 @@
 		</div>
 	</div>
 	<!-- //short-->
-    {% block content%}
 	<div class="register-form-main">
+        {% block content%}
 		<div class="container">
 			<div class="title-div">
 				<h3 class="tittle">
@@ -150,10 +149,9 @@
 					<input type="submit" value="Register">
 				</form>
 			</div>
-
 		</div>
+        {% endblock %}
 	</div>
-    {% endblock %}
 
 	<!-- footer -->
 	<div class="mkl_footer">
