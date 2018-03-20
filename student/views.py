@@ -15,3 +15,15 @@ def index(request):
     else:
         form = Add_personal_massage()
         return render(request,'student/personal_massage.html',{'form':form})
+
+def student_massage_page(request):
+    pass
+
+def parents_page(request):
+    pass
+
+def update_page(request):
+    pass
+
+def gratuate_page(request):
+    pass
