@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^users/', include('users.urls')),
     url(r'^users/', include('django.contrib.auth.urls')),
     url(r'^$', views.index, name='index'),
-    url(r'^pmassage/',s_views.index,name='index')
+    url(r'^student_massage/',s_views.index,name='index'),
+    url(r'^student_massage_show/',s_views.student_personal_massage,name='stu_page')
 ]
