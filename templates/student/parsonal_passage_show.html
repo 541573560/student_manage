@@ -1,2 +1,14 @@
-
-{{ student }}
+<!DOCTYPE html>
+<html lang="zh-han">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+</head>
+<body>
+{#% if user.is_authenticated %#}
+{#% if users.username == student.stu_id %#}
+    {{ student.stu_id }}
+{#% endif %#}
+{#% endif %#}
+</body>
+</html>

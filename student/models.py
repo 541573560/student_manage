@@ -16,9 +16,12 @@ class student_personal_massage(models.Model):
     single_kinds = models.CharField(max_length=5, verbose_name='是否独生子女')
     study_way = models.CharField(max_length=15, verbose_name='入学前授课方式', help_text='汉语/其他语言')
 
-    class Meta:
-        verbose_name = '学生基本信息'
-        verbose_name_plural = '学生基本信息填写'
+    #class Meta:
+    #    verbose_name = '学生基本信息'
+    #    verbose_name_plural = '学生基本信息填写'
+
+    def __str__(self):
+        return self.student_id
 
 class parents(models.Model):
     stu_id = models.CharField(max_length=8)
@@ -35,9 +38,9 @@ class parents(models.Model):
         return self.name
 
 
-    class Meta:
-        verbose_name = '家庭信息'
-        verbose_name_plural = '家庭信息'
+    #class Meta:
+    #    verbose_name = '家庭信息'
+    #    verbose_name_plural = '家庭信息'
 
 class update_massage(models.Model):
     stu_id = models.CharField(max_length=8)
@@ -60,9 +63,9 @@ class update_massage(models.Model):
         return self.id
 
 
-    class Meta:
-        verbose_name = '就读信息'
-        verbose_name_plural = '就读信息'
+    #class Meta:
+    #    verbose_name = '就读信息'
+    #    verbose_name_plural = '就读信息'
 
 class gratudated_and_employ(models.Model):
     stu_id = models.CharField(max_length=8)

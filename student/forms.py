@@ -40,7 +40,7 @@ class Add_personal_massage(forms.Form):
 class parents_massage(forms.Form):
     stu_id = forms.CharField(max_length=8)
     name = forms.CharField(max_length=10,label='姓名')
-    birthday = forms.DateField(label='出生年月')
+    birthday = forms.DateField(label='出生年月',widget=forms.DateTimeInput(attrs={'type': 'date'})),
     relation_of_student = forms.CharField(max_length=6,label='与本人关系', help_text='父亲/母亲/妹妹')
     work_location = forms.CharField(max_length=20, label='工作单位')
     post = forms.CharField(max_length=10, label='职务')
@@ -62,7 +62,7 @@ class parents_massage(forms.Form):
         )
 
 
-class Update_massage():
+class Update_massage(forms.Form):
     stu_id = forms.CharField(max_length=8)
     living_room = forms.CharField(max_length=6, label='所在宿舍')
     phone_number = forms.CharField(max_length=11, label='电话')
@@ -97,7 +97,7 @@ class Update_massage():
         )
 
 
-class Gratuations():
+class Gratuations(forms.Form):
     stu_id = forms.CharField(max_length=8)
     gratudated = forms.CharField(max_length=2, label='是否毕业')
     gratudated_reason = forms.CharField(max_length=200,label='未毕业原因', )
