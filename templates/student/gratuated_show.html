@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+    {% for gratuate in gratuated %}
+        {% if gratuate.stu_id == user.username %}
+            {{ gratuate.date }}
+            {{ gratuate.gratudated }}
+            {{ gratuate.gratudated_reason }}
+            {{ gratuate.degree }}
+            {{ gratuate.degree_reason }}
+            {{ gratuate.back_xinjiang }}
+            {{ gratuate.employ_apartment }}
+            {{ gratuate.employ_apartment_manager }}
+            {{ gratuate.employ_apartment_phone }}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</body>
+</html>

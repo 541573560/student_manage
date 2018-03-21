@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变更信息</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+    {% for myself in mysels %}
+        {% if myself.stu_id == user.username %}
+            {{ myself.date }}
+            {{ myself.living_room }}
+            {{ myself.phone_number }}
+            {{ myself.pareants_single }}
+            {{ myself.basic_living_allowances }}
+            {{ myself.orphan_disablity }}
+            {{ myself.martyr }}
+            {{ myself.party_member }}
+            {{ myself.party_member_application }}
+            {{ myself.population }}
+            {{ myself.poor }}
+            {{ myself.poor_reason }}
+            {{ myself.Instructor }}
+            {{ myself.Instructor_nmber }}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</body>
+</html>
