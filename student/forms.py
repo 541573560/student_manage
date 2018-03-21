@@ -1,6 +1,6 @@
 from django import forms
-from student.models import student_personal_massage,parents,gratudated_and_employ,update_massage
 
+#form.py文件定义了四个表单，用于用户提交信息。目前暂时没有想到如何内置save方法，若有缘人有解决的办法请给我issuse。感谢！
 #表单1，学生基本信息表单，内置反法为直接将信息存储至数据库
 class Add_personal_massage(forms.Form):
     student_id = forms.CharField(max_length=30,label="学号")
@@ -18,25 +18,8 @@ class Add_personal_massage(forms.Form):
     single_kinds = forms.CharField(max_length=5,label="是否独生子女")
     study_way = forms.CharField(max_length=15,label="入学前授课方式")
 
-    def save(self):
-        student_personal_massage.objects.create(
-            student_id = self.student_id,
-            name = self.name,
-            sex=self.sex,
-            family_address = self.family_address,
-            acdemy = self.acdemy,
-            class_num = self.class_num,
-            train_level = self.train_level,
-            registered_residence = self.registered_residence,
-            length_of_schooling = self.length_of_schooling,
-            Political_level = self.Political_level,
-            graduated_high_school = self.graduated_high_school,
-            graduation_grades = self.graduation_grades,
-            single_kinds = self.single_kinds,
-            study_way = self.study_way
-        )
 
-#表单2，父母信息类 定义save函数保存数据
+#表单2，父母信息类
 class parents_massage(forms.Form):
     stu_id = forms.CharField(max_length=8)
     name = forms.CharField(max_length=10,label='姓名')
@@ -48,20 +31,8 @@ class parents_massage(forms.Form):
     phone_number = forms.CharField(max_length=10, label='联系电话')
     healthy_condition = forms.CharField(max_length=10, label='健康状况')
 
-    def save(self):
-        parents.objects.create(
-            stu_id = self.stu_id,
-            name = self.name,
-            birthday = self.birthday,
-            relation_of_student = self.relation_of_student,
-            work_location = self.work_location,
-            post = self.post,
-            Political_level_p = self.Political_level_p,
-            phone_number = self.phone_number,
-            healthy_condition = self.healthy_condition,
-        )
 
-
+#表单3，变更信息类
 class Update_massage(forms.Form):
     stu_id = forms.CharField(max_length=8)
     living_room = forms.CharField(max_length=6, label='所在宿舍')
@@ -78,25 +49,8 @@ class Update_massage(forms.Form):
     Instructor = forms.CharField(max_length=10, label='辅导员姓名')
     Instructor_nmber = forms.CharField(max_length=11, label='辅导员电话')
 
-    def save(self):
-        update_massage.objects.create(
-            stu_id = self.stu_id,
-            living_room = self.living_room,
-            phone_number = self.phone_number,
-            parents_single = self.pareants_single,
-            basic_living_allowances = self.basic_living_allowances,
-            orphan_disablity = self.orphan_disablity,
-            martyr = self.martyr,
-            party_menber = self.party_member,
-            party_member_application = self.party_member_application,
-            population = self.population,
-            poor = self.poor,
-            poor_reason = self.poor_reason,
-            Instructor = self.Instructor,
-            Instructor_nmber = self.Instructor_nmber
-        )
 
-
+#毕业就业类
 class Gratuations(forms.Form):
     stu_id = forms.CharField(max_length=8)
     gratudated = forms.CharField(max_length=2, label='是否毕业')
@@ -108,17 +62,6 @@ class Gratuations(forms.Form):
     employ_apartment_manager = forms.CharField(max_length=5, label='就业单位联系人')
     employ_apartment_phone = forms.CharField(max_length=15, label='就业单位联系电话')
 
-    def save(self):
-        gratudated_and_employ.objects.create(
-            stu_id=self.stu_id,
-            gratudated = self.gratudated,
-            gratudated_reason = self.gratudated_reason,
-            degree = self.degree,
-            degree_reason = self.degree_reason,
-            back_xinjiang = self.back_xinjiang,
-            employ_apartment = self.employ_apartment,
-            employ_apartment_manager = self.employ_apartment_manager,
-            employ_apartment_phone = self.employ_apartment_phone
-        )
+
 
 

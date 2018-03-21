@@ -59,9 +59,6 @@ class update_massage(models.Model):
     Instructor = models.CharField(max_length=10,verbose_name='辅导员姓名')
     Instructor_nmber = models.CharField(max_length=11,verbose_name='辅导员电话')
 
-    def __str__(self):
-        return self.id
-
 
     #class Meta:
     #    verbose_name = '就读信息'
