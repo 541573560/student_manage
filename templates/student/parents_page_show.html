@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>家庭信息</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+    {% for par in parent %}
+        {% if par.stu_id == user.username %}
+        {{ par.stu_id }}
+        {{ par.name }}
+        {{ par.birthday }}
+        {{ par.relation_of_student }}
+        {{ par.work_location }}
+        {{ par.post }}
+        {{ par.Political_level_p }}
+        {{ par.phone_number }}
+        {{ par.healthy_condition }}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</body>
+</html>
