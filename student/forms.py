@@ -1,5 +1,7 @@
 from django.forms import ModelForm
 from student import models
+# from uni_form.helper import FormHelper
+from crispy_forms.helper import FormHelper
 
 #form.py文件定义了四个表单，用于用户提交信息。
 #表单1，学生基本信息表单，内置反法为直接将信息存储至数据库
