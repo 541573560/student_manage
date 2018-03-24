@@ -5,10 +5,31 @@
     <title>个人信息</title>
 </head>
 <body>
-{#% if user.is_authenticated %#}
-{#% if users.username == student.stu_id %#}
-    {{ student.stu_id }}
-{#% endif %#}
+{% if user.is_authenticated %}
+{% for student in students %}
+    {% if student.student_id == user.username %}
+    <!-- 选择与当前用户相同的数据显示 -->
+    <h4>{{ student.student_id }}</h4>
+    {{ student.name }}
+    {{ student.sex }}
+    {{ student.family_address }}
+    {{ student.academy }}
+    {{ student.class_num }}
+    {{ student.train_level }}
+    {{ student.registered_residence }}
+    {{ student.length_of_schooling }}
+    {{ student.Political_level }}
+    {{ student.graduated_high_school }}
+    {{ student.graduation_grades }}
+    {{ student.single_kinds }}
+    {{ student.study_way }}
+    {% else %}
+        <h3>你尚未登录</h3>
+    {% endif %}
+{% endfor %}
+{% endif %}
+
+
 {#% endif %#}
 </body>
 </html>

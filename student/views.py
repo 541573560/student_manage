@@ -7,42 +7,49 @@ def index(request):
     if request.method == 'POST':
         form = Add_personal_massage(request.POST)
         if form.is_valid():
-            #form.save()保存暂时没有
-            return HttpResponse(form)#返回显示信息的主页
+            massage = form.save(commit=False)
+            massage.student_id = request.user
+            massage.save()
+            return HttpResponse('success')#返回显示信息的主页
 
     else:
-        form = Add_personal_massage()
+        form = Add_personal_massage(
+            # initial=[{'student_id':request.user},]
+        )
         return render(request,'student/personal_massage.html',{'form':form})
 
-    #学生个人信息 查看 页面响应函数
+#学生个人信息 查看 页面响应函数
 def student_massage_page(request):
     from .models import student_personal_massage
-    students = student_personal_massage.objects.all()
+    students = student_personal_massage.objects.filter(student_id=request.user)
     return render(request,'student/parsonal_passage_show.html',{'students':students})
 
 #家庭信息 查看 页面响应函数
 def parents_page(request):
     from .models import parents
-    parent = parents.objects.all()
+    parent = parents.objects.filter(stu_id=request.user)
     return render(request,'student/parents_page_show.html',{'parent':parent})
 
 #家庭信息 提交 页面响应函数
 def parents_page_commit(request):
     from .forms import parents_massage
     if request.method == 'POST':
-        pagrents = parents_massage(request.POST)
-        if pagrents.is_valid():
+        form = parents_massage(request.POST)
+        if form.is_valid():
             #增加数据
-            return HttpResponse(pagrents)
+            massage = form.save(commit=False)
+            massage.stu_id = request.user
+            massage.save()
+            return HttpResponse('ok')
 
     else:
-        pagrents = parents_massage()
-        return render(request,'student/parents_massage_add.html',{'pagrents':pagrents})
+        form = parents_massage()
+        return render(request,'student/parents_massage_add.html',{'form':form})
 
 #变更信息 显示 响应函数
 def update_page(request):
     from .models import update_massage
-    mysels = update_massage.objects.all()
+    mysels = update_massage.objects.filter(stu_id=request.user)
     return render(request,'student/update_show.html',{'mysels':mysels})
 
 #变更信息 提交 响应函数
@@ -52,7 +59,8 @@ def update_page_add(request):
         update = Update_massage(request.POST)
         if update.is_valid():
             #增加数据
-            return HttpResponse(update)
+            update.save()
+            return HttpResponse('ok')
 
     else:
         update = Update_massage()
@@ -61,7 +69,8 @@ def update_page_add(request):
 #毕业就业信息 显示 响应函数
 def gratuate_page(request):
     from .models import gratudated_and_employ
-    gratuated = gratudated_and_employ.objects.all()
+    condition = request.user
+    gratuated = gratudated_and_employ.objects.filter(stu_id=condition)
     return render(request,'student/gratuated_show.html',{'gratuated':gratuated})
 
 #毕业就业信息 提交 响应函数
@@ -71,7 +80,8 @@ def gratuate_page_add(request):
         gratuated = Gratuations(request.POST)
         if gratuated.is_valid():
             #增加数据
-            return HttpResponse(gratuated)
+            gratuated.save()
+            return HttpResponse('ojbk')
 
     else:
         gratuated = Gratuations()

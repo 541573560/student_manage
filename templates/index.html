@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-{% if user.is_authenticated %}
-    <div>
+<div class="title-div">
+    <h3 class="tittle">
+        <span>W</span>elcome
+    </h3>
+    <div class="tittle-style">
+
+    </div>
+</div>
+<div class="login-form">
+    <div class="welcome" style="margin-left: 35%" >
+    {% if user.is_authenticated %}
     <p>你已登录，欢迎你：<a href="#">{{ user.username }}</a></p>
     <button class="btn btn-default"><a href="{% url 'logout' %}?next={{ request.path }}">注销登录</a>
     </button>
@@ -15,6 +24,8 @@
         <button class="btn btn-default"><a href="{% url 'users:register' %}?next={{ request.path }}">注册</a>
         </button>
     </p>
+    {% endif %}
     </div>
-{% endif %}
+</div>
 {% endblock %}
+

@@ -25,9 +25,12 @@ urlpatterns = [
     url(r'^users/', include('users.urls')),
     url(r'^users/', include('django.contrib.auth.urls')),
     url(r'^$', views.index, name='index'),
-    url(r'^student_massage_add/',s_views.index,name='index'),
+    url(r'^student_massage_add/',s_views.index,name='ma_add'),
     url(r'^student_massage_show/',s_views.student_massage_page,name='stu_page'),
     url(r'^parents_massage_add/',s_views.parents_page_commit,name='Pmas_add'),
-    url(r'^update_add',s_views.update_page_add,name='up_add'),
+    url(r'^update_add/',s_views.update_page_add,name='up_add'),
     url(r'^gratuated_add',s_views.gratuate_page_add,name='gr_add'),
+    url(r'^parents_massage_show/',s_views.parents_page,name='p_show'),
+    url(r'^update_show/',s_views.update_page,name='up_show'),
+    url(r'^gratuated_show',s_views.gratuate_page,name='gr_show')
 ]

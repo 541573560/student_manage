@@ -1,7 +1,7 @@
 from django.db import models
 
 class student_personal_massage(models.Model):
-    student_id = models.CharField(max_length=8)
+    student_id = models.CharField(max_length=8,verbose_name='学号')
     name = models.CharField(max_length=10, verbose_name='姓名')
     sex = models.CharField(max_length=10, blank=True, verbose_name='性别')
     family_address = models.CharField(max_length=50,default=None, blank=True, verbose_name='家庭住址')
@@ -66,7 +66,7 @@ class update_massage(models.Model):
 
 class gratudated_and_employ(models.Model):
     stu_id = models.CharField(max_length=8)
-    date = models.DateField(auto_now_add=True,auto_created=True)
+    date = models.DateField(auto_now_add=True)
     gratudated = models.CharField(max_length=2,verbose_name='是否毕业')
     gratudated_reason = models.CharField(max_length=200,verbose_name='未毕业原因',default=None,blank=True)
     degree = models.CharField(max_length=2,verbose_name='是否授予学位',default=None,blank=True,help_text='可以不填，以下同上')
