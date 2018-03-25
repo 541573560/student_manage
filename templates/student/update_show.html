@@ -1,29 +1,105 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>变更信息</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
 {% if user.is_authenticated %}
-    {% for myself in mysels %}
-        {% if myself.stu_id == user.username %}
-            {{ myself.date }}
-            {{ myself.living_room }}
-            {{ myself.phone_number }}
-            {{ myself.pareants_single }}
-            {{ myself.basic_living_allowances }}
-            {{ myself.orphan_disablity }}
-            {{ myself.martyr }}
-            {{ myself.party_member }}
-            {{ myself.party_member_application }}
-            {{ myself.population }}
-            {{ myself.poor }}
-            {{ myself.poor_reason }}
-            {{ myself.Instructor }}
-            {{ myself.Instructor_nmber }}
-        {% endif %}
-    {% endfor %}
+    <div class="htmleaf-container">
+		<table id="miyazaki">
+			<!-- <caption>The Films of Hayao Miyazaki</caption> -->
+			<thead>
+			<tr><th>日期<th>所在宿舍<th>电话<th>是否单亲家庭<th>是否拥有最低城市/农村生活保障<th>是/否孤残<th>是/否烈士子女<th>学制是/否党员<th>是/否递交入党申请书<th>家庭人口数<th>家庭是否困难<th>困难原因<th>辅导员姓名<th>辅导员电话
+			<tbody>
+        {% for myself in mysels %}
+			<tr>
+            <td>{{ myself.date|date }}
+            <td>{{ myself.living_room }}
+            <td>{{ myself.phone_number }}
+            <td>{{ myself.pareants_single }}
+            <td>{{ myself.basic_living_allowances }}
+            <td>{{ myself.orphan_disablity }}
+            <td>{{ myself.martyr }}
+            <td>{{ myself.party_member }}
+            <td>{{ myself.party_member_application }}
+            <td>{{ myself.population }}
+            <td>{{ myself.poor }}
+            <td>{{ myself.poor_reason }}
+            <td>{{ myself.Instructor }}
+            <td>{{ myself.Instructor_nmber }}
+        	<tr>
+        {% endfor %}
+    </table>
+	    </div>
+        <div class="massage_add">
+            <a href="{% url 'up_add' %}"><span>添加信息</span></a>
+        </div>
 {% endif %}
-</body>
-</html>
+    <style>
+    .massage_add{
+            margin-left: 47%;
+            margin-top: 2%;
+        }
+	table#miyazaki {
+	  margin: 0 auto;
+	  border-collapse: collapse;
+	  font-family: Agenda-Light, sans-serif;
+	  font-weight: 100;
+	  background: #333; color: #fff;
+	  text-rendering: optimizeLegibility;
+	  border-radius: 5px;
+	}
+	table#miyazaki caption {
+	  font-size: 2rem; color: #444;
+	  margin: 1rem;
+	  /* background-image: url(img/miyazaki.png), url(img/miyazaki2.png); */
+	  background-size: contain;
+	  background-repeat: no-repeat;
+	  background-position: center left, center right;
+	}
+	table#miyazaki thead th { font-weight: 600; }
+	table#miyazaki thead th, table#miyazaki tbody td {
+	  padding: .8rem; font-size: 1.4rem;
+	}
+	table#miyazaki tbody td {
+	  padding: .8rem; font-size: 1.4rem;
+	  color: #444; background: #eee;
+	}
+	table#miyazaki tbody tr:not(:last-child) {
+	  border-top: 1px solid #ddd;
+	  border-bottom: 1px solid #ddd;
+	}
+
+	@media screen and (max-width: 600px) {
+	  table#miyazaki caption { background-image: none; }
+	  table#miyazaki thead { display: none; }
+	  table#miyazaki tbody td {
+	    display: block; padding: .6rem;
+	  }
+	  table#miyazaki tbody tr td:first-child {
+	    background: #666; color: #fff;
+	  }
+		table#miyazaki tbody td:before {
+	    content: attr(data-th);
+	    font-weight: bold;
+	    display: inline-block;
+	    width: 6rem;
+	  }
+	}
+	</style>
+
+
+	<script>
+	var headertext = [], headers = document.querySelectorAll('#miyazaki th'), tablerows = document.querySelectorAll('#miyazaki th'), tablebody = document.querySelector('#miyazaki tbody');
+	for (var i = 0; i < headers.length; i++) {
+	    if (window.CP.shouldStopExecution(1)) {
+	        break;
+	    }
+	    var current = headers[i];
+	    headertext.push(current.textContent.replace(/\r?\n|\r/, ''));
+	}
+	window.CP.exitedLoop(1);
+	for (var i = 0, row; row = tablebody.rows[i]; i++) {
+	    for (var j = 0, col; col = row.cells[j]; j++) {
+	        col.setAttribute('data-th', headertext[j]);
+	    }
+	}
+	</script>
+{% endblock %}

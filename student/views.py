@@ -69,8 +69,7 @@ def update_page_add(request):
 #毕业就业信息 显示 响应函数
 def gratuate_page(request):
     from .models import gratudated_and_employ
-    condition = request.user
-    gratuated = gratudated_and_employ.objects.filter(stu_id=condition)
+    gratuated = gratudated_and_employ.objects.filter(stu_id=request.user)
     return render(request,'student/gratuated_show.html',{'gratuated':gratuated})
 
 #毕业就业信息 提交 响应函数

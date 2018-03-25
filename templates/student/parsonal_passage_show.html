@@ -1,35 +1,106 @@
-<!DOCTYPE html>
-<html lang="zh-han">
-<head>
-    <meta charset="UTF-8">
-    <title>个人信息</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
 {% if user.is_authenticated %}
-{% for student in students %}
-    {% if student.student_id == user.username %}
-    <!-- 选择与当前用户相同的数据显示 -->
-    <h4>{{ student.student_id }}</h4>
-    {{ student.name }}
-    {{ student.sex }}
-    {{ student.family_address }}
-    {{ student.academy }}
-    {{ student.class_num }}
-    {{ student.train_level }}
-    {{ student.registered_residence }}
-    {{ student.length_of_schooling }}
-    {{ student.Political_level }}
-    {{ student.graduated_high_school }}
-    {{ student.graduation_grades }}
-    {{ student.single_kinds }}
-    {{ student.study_way }}
+    <div class="htmleaf-container" style="height:px">
+		<table id="miyazaki">
+			<thead>
+			<tr><th>学号<th>姓名<th>性别<th>家庭住址<th>学校<th>班级<th>学制<th>入学前户口<th>学制<th>政治面貌<th>高中毕业学校<th>高考总分<th>是否独生子女<th>入学前授课方式
+			<tbody>
+        {% for student in students %}
+			<tr>
+            <td>{{ student.student_id }}
+            <td>{{ student.name }}
+            <td>{{ student.sex }}
+            <td>{{ student.family_address }}
+            <td>{{ student.academy }}
+            <td>{{ student.class_num }}
+            <td>{{ student.train_level }}
+            <td>{{ student.registered_residence }}
+            <td>{{ student.length_of_schooling }}
+            <td>{{ student.Political_level }}
+            <td>{{ student.graduated_high_school }}
+            <td>{{ student.graduation_grades }}
+            <td>{{ student.single_kinds }}
+            <td>{{ student.study_way }}
+			<tr>
+        {% endfor %}
+        </table>
+    </div>
+    <div class="massage_add">
+        <a href="{% url 'ma_add' %}"><span>添加信息</span></a>
+    </div>
     {% else %}
-        <h3>你尚未登录</h3>
-    {% endif %}
-{% endfor %}
+    <h1 style="left: 45%">您尚未登录</h1>
 {% endif %}
+<style>
+    .massage_add{
+            margin-left: 47%;
+            margin-top: 2%;
+    }
+	table#miyazaki {
+	  margin: 0 auto;
+	  border-collapse: collapse;
+	  font-family: Agenda-Light, sans-serif;
+	  font-weight: 100;
+	  background: #333; color: #fff;
+	  text-rendering: optimizeLegibility;
+	  border-radius: 5px;
+	}
+	table#miyazaki caption {
+	  font-size: 2rem; color: #444;
+	  margin: 1rem;
+	  /* background-image: url(img/miyazaki.png), url(img/miyazaki2.png); */
+	  background-size: contain;
+	  background-repeat: no-repeat;
+	  background-position: center left, center right;
+	}
+	table#miyazaki thead th { font-weight: 600; }
+	table#miyazaki thead th, table#miyazaki tbody td {
+	  padding: .8rem; font-size: 1.4rem;
+	}
+	table#miyazaki tbody td {
+	  padding: .8rem; font-size: 1.4rem;
+	  color: #444; background: #eee;
+	}
+	table#miyazaki tbody tr:not(:last-child) {
+	  border-top: 1px solid #ddd;
+	  border-bottom: 1px solid #ddd;
+	}
+
+	@media screen and (max-width: 600px) {
+	  table#miyazaki caption { background-image: none; }
+	  table#miyazaki thead { display: none; }
+	  table#miyazaki tbody td {
+	    display: block; padding: .6rem;
+	  }
+	  table#miyazaki tbody tr td:first-child {
+	    background: #666; color: #fff;
+	  }
+		table#miyazaki tbody td:before {
+	    content: attr(data-th);
+	    font-weight: bold;
+	    display: inline-block;
+	    width: 6rem;
+	  }
+	}
+	</style>
 
 
-{#% endif %#}
-</body>
-</html>
+	<script>
+	var headertext = [], headers = document.querySelectorAll('#miyazaki th'), tablerows = document.querySelectorAll('#miyazaki th'), tablebody = document.querySelector('#miyazaki tbody');
+	for (var i = 0; i < headers.length; i++) {
+	    if (window.CP.shouldStopExecution(1)) {
+	        break;
+	    }
+	    var current = headers[i];
+	    headertext.push(current.textContent.replace(/\r?\n|\r/, ''));
+	}
+	window.CP.exitedLoop(1);
+	for (var i = 0, row; row = tablebody.rows[i]; i++) {
+	    for (var j = 0, col; col = row.cells[j]; j++) {
+	        col.setAttribute('data-th', headertext[j]);
+	    }
+	}
+	</script>
+{% endblock %}

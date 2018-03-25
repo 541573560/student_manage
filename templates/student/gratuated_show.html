@@ -3,13 +3,13 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-    {% for gratuate in gratuated %}
-        <div class="htmleaf-container" style="height: 500px">
+    <div class="htmleaf-container">
 		<table id="miyazaki">
 			<!-- <caption>The Films of Hayao Miyazaki</caption> -->
 			<thead>
 			<tr><th>填写日期<th>是否毕业<th>未毕业原因<th>是否获得学位<th>未获得学位原因<th>是否返回新疆<th>就业单位<th>就业单位联系人<th>就业单位联系电话
 			<tbody>
+        {% for gratuate in gratuated %}
 			<tr>
 			<td>{{ gratuate.date|date }}
 			<td>{{ gratuate.gratudated }}
@@ -21,14 +21,22 @@
 			<td>{{ gratuate.employ_apartment_manager }}
 			<td>{{ gratuate.employ_apartment_phone}}
 			<tr>
-		</table>
+        {% endfor %}
+        </table>
 	</div>
-    {% endfor %}
+    <div class="massage_add">
+        <a href="{% url 'gr_add' %}"><span>添加信息</span></a>
+    </div>
+
     {% else %}
     您尚未登录
 {% endif %}
 
     <style>
+    .massage_add{
+        margin-left: 47%;
+        margin-top: 2%;
+    }
 	table#miyazaki {
 	  margin: 0 auto;
 	  border-collapse: collapse;
@@ -77,7 +85,7 @@
 	}
 	</style>
 
-<script src='/static/js/jquery-1.11.0.min.js'></script>
+
 	<script>
 	var headertext = [], headers = document.querySelectorAll('#miyazaki th'), tablerows = document.querySelectorAll('#miyazaki th'), tablebody = document.querySelector('#miyazaki tbody');
 	for (var i = 0; i < headers.length; i++) {

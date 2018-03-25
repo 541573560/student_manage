@@ -16,9 +16,9 @@
 			window.scrollTo(0, 1);
 		}
 	</script>
-
-    <link rel="stylesheet" type="text/css" href="/static/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" href="/static/css/default.css">
+{#zhuyi#}
+{#    <link rel="stylesheet" type="text/css" href="/static/css/normalize.css" media="all"/>#}
+{#	<link rel="stylesheet" type="text/css" href="/static/css/default.css" media="all">#}
 	<!-- //meta-tags -->
 	<link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -44,12 +44,17 @@
 			</div>
 			<div class="bottom_header_right">
 				<div class="header-top-righ">
-					<a href="login.html">
+					<a href="{% url 'login' %}">
 						<span class="fa fa-sign-out" aria-hidden="true"></span>登录</a>
 				</div>
-				<div class="clearfix"> </div>
+
+				<div class="header-top-righ">
+                    <a href="{% url 'logout' %}">
+                        <span class="fa fa-sign-out">注销</span>
+                    </a>
+                </div>
 			</div>
-			<div class="clearfix"> </div>
+			<div class="clearfix"></div>
 		</div>
 	</div>
 	<div class="header">
@@ -75,19 +80,19 @@
 						<nav class="link-effect-2" id="link-effect-2">
 							<ul class="nav navbar-nav">
 								<li>
-									<a href="index.html" class="effect-3">主页</a>
+									<a href="{% url 'index' %}" class="effect-3">主页</a>
 								</li>
 								<li>
-									<a href="#" class="effect-3">个人信息</a>
+									<a href="{% url 'stu_page' %}" class="effect-3">个人信息</a>
 								</li>
 								<li>
-									<a href="#" class="effect-3">家庭信息</a>
+									<a href="{% url 'p_show' %}" class="effect-3">家庭信息</a>
 								</li>
 								<li>
-									<a href="#" class="effect-3">年度信息</a>
+									<a href="{% url 'up_show' %}" class="effect-3">年度信息</a>
 								</li>
 								<li>
-									<a href="#" class="effect-3">毕业就业</a>
+									<a href="{% url 'gr_show' %}" class="effect-3">毕业就业</a>
 								</li>
 								<!-- <li>
 									<a href="contact.html" class="effect-3">Contact Us</a>
@@ -202,6 +207,7 @@
 	<!-- js files -->
 	<!-- js -->
 	<script src="/static/js/jquery-2.1.4.min.js"></script>
+{#    <script src="/static/js/jquery-1.11.0.min.js"></script>#}
 	<!-- bootstrap -->
 	<script src="/static/js/bootstrap.js"></script>
 	<!-- smooth scrolling -->
