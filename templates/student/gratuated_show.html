@@ -1,24 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
 {% if user.is_authenticated %}
     {% for gratuate in gratuated %}
-        {% if gratuate.stu_id == user.username %}
-            {{ gratuate.date }}
-            {{ gratuate.gratudated }}
-            {{ gratuate.gratudated_reason }}
-            {{ gratuate.degree }}
-            {{ gratuate.degree_reason }}
-            {{ gratuate.back_xinjiang }}
-            {{ gratuate.employ_apartment }}
-            {{ gratuate.employ_apartment_manager }}
-            {{ gratuate.employ_apartment_phone }}
-        {% endif %}
+        <div class="htmleaf-container" style="height: 500px">
+		<table id="miyazaki">
+			<!-- <caption>The Films of Hayao Miyazaki</caption> -->
+			<thead>
+			<tr><th>填写日期<th>是否毕业<th>未毕业原因<th>是否获得学位<th>未获得学位原因<th>是否返回新疆<th>就业单位<th>就业单位联系人<th>就业单位联系电话
+			<tbody>
+			<tr>
+			<td>{{ gratuate.date|date }}
+			<td>{{ gratuate.gratudated }}
+			<td>{{ gratuate.gratudated_reason }}
+			<td>{{ gratuate.degree}}
+			<td>{{ gratuate.degree_reason}}
+			<td>{{ gratuate.back_xinjiang}}
+			<td>{{ gratuate.employ_apartment}}
+			<td>{{ gratuate.employ_apartment_manager }}
+			<td>{{ gratuate.employ_apartment_phone}}
+			<tr>
+		</table>
+	</div>
     {% endfor %}
+    {% else %}
+    您尚未登录
 {% endif %}
-</body>
-</html>
+
+    <style>
+	table#miyazaki {
+	  margin: 0 auto;
+	  border-collapse: collapse;
+	  font-family: Agenda-Light, sans-serif;
+	  font-weight: 100;
+	  background: #333; color: #fff;
+	  text-rendering: optimizeLegibility;
+	  border-radius: 5px;
+	}
+	table#miyazaki caption {
+	  font-size: 2rem; color: #444;
+	  margin: 1rem;
+	  /* background-image: url(img/miyazaki.png), url(img/miyazaki2.png); */
+	  background-size: contain;
+	  background-repeat: no-repeat;
+	  background-position: center left, center right;
+	}
+	table#miyazaki thead th { font-weight: 600; }
+	table#miyazaki thead th, table#miyazaki tbody td {
+	  padding: .8rem; font-size: 1.4rem;
+	}
+	table#miyazaki tbody td {
+	  padding: .8rem; font-size: 1.4rem;
+	  color: #444; background: #eee;
+	}
+	table#miyazaki tbody tr:not(:last-child) {
+	  border-top: 1px solid #ddd;
+	  border-bottom: 1px solid #ddd;
+	}
+
+	@media screen and (max-width: 600px) {
+	  table#miyazaki caption { background-image: none; }
+	  table#miyazaki thead { display: none; }
+	  table#miyazaki tbody td {
+	    display: block; padding: .6rem;
+	  }
+	  table#miyazaki tbody tr td:first-child {
+	    background: #666; color: #fff;
+	  }
+		table#miyazaki tbody td:before {
+	    content: attr(data-th);
+	    font-weight: bold;
+	    display: inline-block;
+	    width: 6rem;
+	  }
+	}
+	</style>
+
+<script src='/static/js/jquery-1.11.0.min.js'></script>
+	<script>
+	var headertext = [], headers = document.querySelectorAll('#miyazaki th'), tablerows = document.querySelectorAll('#miyazaki th'), tablebody = document.querySelector('#miyazaki tbody');
+	for (var i = 0; i < headers.length; i++) {
+	    if (window.CP.shouldStopExecution(1)) {
+	        break;
+	    }
+	    var current = headers[i];
+	    headertext.push(current.textContent.replace(/\r?\n|\r/, ''));
+	}
+	window.CP.exitedLoop(1);
+	for (var i = 0, row; row = tablebody.rows[i]; i++) {
+	    for (var j = 0, col; col = row.cells[j]; j++) {
+	        col.setAttribute('data-th', headertext[j]);
+	    }
+	}
+	</script>
+
+{% endblock %}
+

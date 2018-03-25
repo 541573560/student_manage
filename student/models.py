@@ -24,7 +24,7 @@ class student_personal_massage(models.Model):
         return self.student_id
 
 class parents(models.Model):
-    stu_id = models.CharField(max_length=8)
+    stu_id = models.CharField(max_length=8,verbose_name='学号')
     name = models.CharField(max_length=10, verbose_name='姓名')
     birthday = models.DateField(verbose_name='出生年月')
     relation_of_student = models.CharField(max_length=6, verbose_name='与本人关系', help_text='父亲/母亲/妹妹')
@@ -43,7 +43,7 @@ class parents(models.Model):
     #    verbose_name_plural = '家庭信息'
 
 class update_massage(models.Model):
-    stu_id = models.CharField(max_length=8)
+    stu_id = models.CharField(max_length=8,verbose_name='学号')
     date = models.DateField(auto_now_add=True,auto_created=True)
     living_room = models.CharField(max_length=6,verbose_name='所在宿舍')
     phone_number = models.CharField(max_length=11,verbose_name='电话')
@@ -65,7 +65,7 @@ class update_massage(models.Model):
     #    verbose_name_plural = '就读信息'
 
 class gratudated_and_employ(models.Model):
-    stu_id = models.CharField(max_length=8)
+    stu_id = models.CharField(max_length=8,verbose_name='学号')
     date = models.DateField(auto_now_add=True)
     gratudated = models.CharField(max_length=2,verbose_name='是否毕业')
     gratudated_reason = models.CharField(max_length=200,verbose_name='未毕业原因',default=None,blank=True)
