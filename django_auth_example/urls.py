@@ -32,5 +32,5 @@ urlpatterns = [
     url(r'^gratuated_add',s_views.gratuate_page_add,name='gr_add'),
     url(r'^parents_massage_show/',s_views.parents_page,name='p_show'),
     url(r'^update_show/',s_views.update_page,name='up_show'),
-    url(r'^gratuated_show',s_views.gratuate_page,name='gr_show')
+    url(r'^gratuated_show/',s_views.gratuate_page,name='gr_show')
 ]

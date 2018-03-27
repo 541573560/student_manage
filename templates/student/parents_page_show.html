@@ -7,18 +7,16 @@
 		    <table id="miyazaki">
 			<!-- <caption>The Films of Hayao Miyazaki</caption> -->
 			<thead>
-			<tr><th>姓名<th>出生日期<th>与本人关系<th>工作单位<th>职务<th>政治面貌<th>联系电话<th>健康状况
+			<tr><th>姓名<th>与本人关系<th>工作单位<th>职务<th>政治面貌<th>联系电话
 			<tbody>
         {% for par in parent %}
             <tr>
 			<td>{{ par.name }}
-			<td>{{ par.birthday|date }}
 			<td>{{ par.relation_of_student }}
 			<td>{{ par.work_location }}
 			<td>{{ par.post }}
 			<td>{{ par.Political_level_p }}
 			<td>{{ par.phone_number }}
-			<td>{{ par.healthy_condition }}
 			<tr>
         {% endfor %}
             </table>

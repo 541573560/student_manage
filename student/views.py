@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import HttpResponseRedirect
 
 #个人信息提交响应函数
 def index(request):
@@ -10,7 +11,8 @@ def index(request):
             massage = form.save(commit=False)
             massage.student_id = request.user
             massage.save()
-            return HttpResponse('success')#返回显示信息的主页
+            return HttpResponseRedirect('/student_massage_show/')
+            #return HttpResponse('success')#返回显示信息的主页
 
     else:
         form = Add_personal_massage(
@@ -40,7 +42,8 @@ def parents_page_commit(request):
             massage = form.save(commit=False)
             massage.stu_id = request.user
             massage.save()
-            return HttpResponse('ok')
+            return HttpResponseRedirect('/parents_massage_show/')
+            #return HttpResponse('ok')
 
     else:
         form = parents_massage()
@@ -59,8 +62,11 @@ def update_page_add(request):
         update = Update_massage(request.POST)
         if update.is_valid():
             #增加数据
-            update.save()
-            return HttpResponse('ok')
+            massage = update.save(commit=False)
+            massage.stu_id = request.user
+            massage.save()
+            return HttpResponseRedirect('/update_show/')
+            # return HttpResponse('ok')update_show/
 
     else:
         update = Update_massage()
@@ -79,8 +85,11 @@ def gratuate_page_add(request):
         gratuated = Gratuations(request.POST)
         if gratuated.is_valid():
             #增加数据
-            gratuated.save()
-            return HttpResponse('ojbk')
+            massage = gratuated.save(commit=False)
+            massage.stu_id = request.user
+            massage.save()
+            return HttpResponseRedirect('/gratuated_show/')
+            # return HttpResponse('ojbk')
 
     else:
         gratuated = Gratuations()

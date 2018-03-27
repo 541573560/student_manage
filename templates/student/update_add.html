@@ -7,7 +7,20 @@
     <div class="login-form">
         <form method="post" role="form" class="form-horizontal">
             {% csrf_token %}
-            {{ update|bootstrap_horizontal }}
+            {{ update.date|bootstrap_horizontal }}
+            {{ update.living_room|bootstrap_horizontal }}
+            {{ update.phone_number|bootstrap_horizontal }}
+            {{ update.pareants_single|bootstrap_horizontal }}
+            {{ update.basic_living_allowances|bootstrap_horizontal }}
+            {{ update.orphan_disablity|bootstrap_horizontal }}
+            {{ update.martyr|bootstrap_horizontal }}
+            {{ update.party_member|bootstrap_horizontal }}
+            {{ update.party_member_application|bootstrap_horizontal }}
+            {{ update.population|bootstrap_horizontal }}
+            {{ update.poor|bootstrap_horizontal }}
+            {{ update.poor_reason|bootstrap_horizontal }}
+            {{ update.Instructor|bootstrap_horizontal }}
+            {{ update.Instructor_nmber|bootstrap_horizontal }}
             <div class="col-sm-10 col-sm-offset-2">
               <button type="submit" class="btn btn-primary" style="margin-left: 35%;width: 100px;">提交</button>
             </div>

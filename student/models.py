@@ -8,61 +8,66 @@ class student_personal_massage(models.Model):
     academy = models.CharField(max_length=15,default=None, blank=True, verbose_name='学院')
     class_num = models.CharField(max_length=100, blank=True, verbose_name='班级')
     train_level = models.CharField(max_length=5,blank=True,verbose_name='学制',help_text='本科/专科')
-    registered_residence = models.CharField(max_length=20, verbose_name='入学前户口')
-    length_of_schooling = models.CharField(max_length=10, verbose_name='学制', help_text='例如四年/三年')
-    Political_level = models.CharField(max_length=20, verbose_name='政治面貌')
-    graduated_high_school = models.CharField(max_length=20, verbose_name='高中毕业学校')
-    graduation_grades = models.IntegerField(verbose_name='高考总分')
-    single_kinds = models.CharField(max_length=5, verbose_name='是否独生子女')
-    study_way = models.CharField(max_length=15, verbose_name='入学前授课方式', help_text='汉语/其他语言')
+    registered_residence = models.CharField(max_length=20,blank=True, verbose_name='入学前户口')
+    length_of_schooling = models.CharField(max_length=10,blank=True, verbose_name='学制', help_text='例如四年/三年')
+    Political_level = models.CharField(max_length=20, blank=True,verbose_name='政治面貌')
+    graduated_high_school = models.CharField(max_length=20, blank=True,verbose_name='高中毕业学校')
+    graduation_grades = models.IntegerField(blank=True,verbose_name='高考总分')
+    single_kinds = models.CharField(max_length=5,blank=True, verbose_name='是否独生子女')
+    study_way = models.CharField(max_length=15, blank=True,verbose_name='入学前授课方式', help_text='汉语/其他语言')
+    status = models.BooleanField(default=False,verbose_name='验证状态')
 
-    #class Meta:
-    #    verbose_name = '学生基本信息'
-    #    verbose_name_plural = '学生基本信息填写'
+    class Meta:
+       verbose_name = '学生基本信息'
+       verbose_name_plural = '学生基本信息填写'
 
     def __str__(self):
         return self.student_id
 
+    @property
+    def Set_Status_Ture(self):
+        self.status = True
+        self.save()
+        return self.status
+
 class parents(models.Model):
-    stu_id = models.CharField(max_length=8,verbose_name='学号')
-    name = models.CharField(max_length=10, verbose_name='姓名')
-    birthday = models.DateField(verbose_name='出生年月')
-    relation_of_student = models.CharField(max_length=6, verbose_name='与本人关系', help_text='父亲/母亲/妹妹')
-    work_location = models.CharField(max_length=20, verbose_name='工作单位')
-    post = models.CharField(max_length=10, verbose_name='职务')
-    Political_level_p = models.CharField(max_length=20, verbose_name='政治面貌')
-    phone_number = models.CharField(max_length=10, verbose_name='联系电话')
-    healthy_condition = models.CharField(max_length=10, verbose_name='健康状况')
+    stu_id = models.CharField(max_length=8,blank=True,verbose_name='学号')
+    name = models.CharField(max_length=10, blank=True,verbose_name='姓名')
+    relation_of_student = models.CharField(max_length=6, blank=True,verbose_name='与本人关系', help_text='父亲/母亲/妹妹')
+    work_location = models.CharField(max_length=20, blank=True,verbose_name='工作单位')
+    post = models.CharField(max_length=10, blank=True,verbose_name='职务')
+    Political_level_p = models.CharField(max_length=20, blank=True,verbose_name='政治面貌')
+    phone_number = models.CharField(max_length=10,blank=True, verbose_name='联系电话')
 
     def __str__(self):
         return self.name
 
 
-    #class Meta:
-    #    verbose_name = '家庭信息'
-    #    verbose_name_plural = '家庭信息'
+    class Meta:
+       verbose_name = '家庭信息'
+       verbose_name_plural = '家庭信息'
 
 class update_massage(models.Model):
-    stu_id = models.CharField(max_length=8,verbose_name='学号')
-    date = models.DateField(auto_now_add=True,auto_created=True)
-    living_room = models.CharField(max_length=6,verbose_name='所在宿舍')
-    phone_number = models.CharField(max_length=11,verbose_name='电话')
-    pareants_single = models.CharField(max_length=2,verbose_name='是/否单亲家庭')
-    basic_living_allowances = models.CharField(max_length=2,verbose_name='是否拥有最低城市/农村生活保障')
-    orphan_disablity = models.CharField(max_length=2,verbose_name='是/否孤残')
-    martyr = models.CharField(max_length=2,verbose_name='是/否烈士子女')
-    party_member = models.CharField(max_length=2,verbose_name='是/否党员')
-    party_member_application = models.CharField(max_length=2,verbose_name='是/否递交入党申请书')
-    population = models.CharField(max_length=5,verbose_name='家庭人口数')
-    poor = models.CharField(max_length=5,verbose_name='家庭是否困难',help_text='是/否')
+    stu_id = models.CharField(max_length=8,blank=True,verbose_name='学号')
+    date = models.DateField(auto_now_add=True,blank=True,auto_created=True)
+    living_room = models.CharField(max_length=6,blank=True,verbose_name='所在宿舍')
+    phone_number = models.CharField(max_length=11,blank=True,verbose_name='电话')
+    pareants_single = models.CharField(max_length=2,blank=True,verbose_name='是/否单亲家庭')
+    basic_living_allowances = models.CharField(max_length=2,blank=True,verbose_name='是否拥有最低城市/农村生活保障')
+    orphan_disablity = models.CharField(max_length=2,blank=True,verbose_name='是/否孤残')
+    martyr = models.CharField(max_length=2,blank=True,verbose_name='是/否烈士子女')
+    party_member = models.CharField(max_length=2,blank=True,verbose_name='是/否党员')
+    party_member_application = models.CharField(max_length=2,blank=True,verbose_name='是/否递交入党申请书')
+    population = models.CharField(max_length=5,blank=True,verbose_name='家庭人口数')
+    poor = models.CharField(max_length=5,blank=True,verbose_name='家庭是否困难',help_text='是/否')
     poor_reason = models.CharField(max_length=50,blank=True,verbose_name='困难原因')
     Instructor = models.CharField(max_length=10,verbose_name='辅导员姓名')
     Instructor_nmber = models.CharField(max_length=11,verbose_name='辅导员电话')
 
 
-    #class Meta:
-    #    verbose_name = '就读信息'
-    #    verbose_name_plural = '就读信息'
+    class Meta:
+       verbose_name = '就读信息'
+       verbose_name_plural = '就读信息'
 
 class gratudated_and_employ(models.Model):
     stu_id = models.CharField(max_length=8,verbose_name='学号')

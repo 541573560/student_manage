@@ -6,7 +6,20 @@
 <form method="post" role="form" class="form-horizontal">
     {% csrf_token %}
 <div class="login-form">
-    {{ form|bootstrap_horizontal }}
+    {{ form.student_id|bootstrap_horizontal }}
+    {{ form.name|bootstrap_horizontal }}
+    {{ form.sex|bootstrap_horizontal }}
+    {{ form.family_address|bootstrap_horizontal }}
+    {{ form.academy|bootstrap_horizontal }}
+    {{ form.class_num|bootstrap_horizontal }}
+    {{ form.train_level|bootstrap_horizontal }}
+    {{ form.registered_residence|bootstrap_horizontal }}
+    {{ form.length_of_schooling|bootstrap_horizontal }}
+    {{ form.Political_level|bootstrap_horizontal }}
+    {{ form.graduated_high_school|bootstrap_horizontal }}
+    {{ form.graduation_grades|bootstrap_horizontal }}
+    {{ form.single_kinds|bootstrap_horizontal }}
+    {{ form.study_way|bootstrap_horizontal }}
     <div class="col-sm-10 col-sm-offset-2">
       <button type="submit" class="btn btn-primary" style="margin-left: 35%;width: 100px">提交</button>
     </div>
