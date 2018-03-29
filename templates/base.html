@@ -7,15 +7,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
-	<script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
-
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
-	</script>
 {#zhuyi#}
 {#    <link rel="stylesheet" type="text/css" href="/static/css/normalize.css" media="all"/>#}
 {#	<link rel="stylesheet" type="text/css" href="/static/css/default.css" media="all">#}
@@ -215,42 +206,6 @@
 	<script src="/static/js/move-top.js"></script>
 	<script src="/static/js/easing.js"></script>
 	<!-- here stars scrolling icon -->
-	<script>
-		$(document).ready(function () {
-			/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear'
-				};
-			*/
-
-			$().UItoTop({
-				easingType: 'easeOutQuart'
-			});
-
-		});
-	</script>
-	<!-- //here ends scrolling icon -->
-	<!-- smooth scrolling -->
-	<!-- password-script -->
-	<script>
-		window.onload = function () {
-			document.getElementById("password1").onchange = validatePassword;
-			document.getElementById("password2").onchange = validatePassword;
-		}
-
-		function validatePassword() {
-			var pass2 = document.getElementById("password2").value;
-			var pass1 = document.getElementById("password1").value;
-			if (pass1 != pass2)
-				document.getElementById("password2").setCustomValidity("Passwords Don't Match");
-			else
-				document.getElementById("password2").setCustomValidity('');
-			//empty string means no validation error
-		}
-	</script>
 	<!-- //password-script -->
 	<!-- //js-files -->
 

@@ -6,15 +6,7 @@
 <div class="login-form">
     <form method="post" role="form" class="form-horizontal">
         {% csrf_token %}
-        {{ gratuated.date|bootstrap_horizontal }}
-        {{ gratuated.gratudated|bootstrap_horizontal }}
-        {{ gratuated.gratudated_reason|bootstrap_horizontal }}
-        {{ gratuated.degree|bootstrap_horizontal }}
-        {{ gratuated.degree_reason|bootstrap_horizontal }}
-        {{ gratuated.back_xinjiang|bootstrap_horizontal }}
-        {{ gratuated.employ_apartment|bootstrap_horizontal }}
-        {{ gratuated.employ_apartment_manager|bootstrap_horizontal }}
-        {{ gratuated.employ_apartment_phone|bootstrap_horizontal }}
+        {{ gratuated|bootstrap_horizontal }}
         <div class="col-sm-10 col-sm-offset-2">
           <button type="submit" class="btn btn-primary" style="margin-left: 35%;width: 100px">提交</button>
         </div>
