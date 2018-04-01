@@ -38,34 +38,37 @@ def register(request):
 
 def index(request):
     from student.models import student_personal_massage,update_massage,gratudated_and_employ,parents
-    if request.user == 'jisuanji':
-        student = student_personal_massage.objects.filter(student_id__iregex='^201524')
-        update = update_massage
-        pass
-    elif request.user == 'guojiao':
-        pass
-    elif request.user == 'jingjiguanli':
-        pass
-    elif request.user == 'jidian':
-        pass
-    elif request.user == 'cailiao':
-        pass
-    elif request.user == 'huaxuegongcheng':
-        pass
-    elif request.user == 'huaxueshengming':
-        pass
-    elif request.user == 'yishusheji':
-        pass
-    elif request.user == 'renwen':
-        pass
-    elif request.user == 'makesi':
-        pass
-    elif request.user == 'jichu':
-        pass
-    elif request.user == 'waiguoyu':
-        pass
-    elif request.user == 'yingyong':
-        pass
-    else:
-        return render(request, 'index.html')
+    # if request.user == 'jisuanji':
+    #     student = student_personal_massage.objects.filter(academy__contains='计算机')
+    #     # id =
+    #     # update = update_massage.objects.get(stu_id=student.student_id)s
+    #     # gratuate = gratudated_and_employ.objects.get(stu_id=student.student_id)
+    #     # famliy = parents.objects.get(stu_id=student.student_id)
+    #
+    # elif request.user == 'guojiao':
+    #     pass
+    # elif request.user == 'jingjiguanli':
+    #     pass
+    # elif request.user == 'jidian':
+    #     pass
+    # elif request.user == 'cailiao':
+    #     pass
+    # elif request.user == 'huaxuegongcheng':
+    #     pass
+    # elif request.user == 'huaxueshengming':
+    #     pass
+    # elif request.user == 'yishusheji':
+    #     pass
+    # elif request.user == 'renwen':
+    #     pass
+    # elif request.user == 'makesi':
+    #     pass
+    # elif request.user == 'jichu':
+    #     pass
+    # elif request.user == 'waiguoyu':
+    #     pass
+    # elif request.user == 'yingyong':
+    #     pass
+    # else:
+    return render(request, 'index.html')
 

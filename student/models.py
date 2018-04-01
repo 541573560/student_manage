@@ -1,7 +1,7 @@
 from django.db import models
 
 class student_personal_massage(models.Model):
-    student_id = models.CharField(max_length=8,verbose_name='学号')
+    stu_id = models.CharField(max_length=8,verbose_name='学号')
     name = models.CharField(max_length=10, verbose_name='姓名')
     sex = models.CharField(max_length=10, blank=True, verbose_name='性别')
     family_address = models.CharField(max_length=50,default=None, blank=True, verbose_name='家庭住址')
