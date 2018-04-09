@@ -9,7 +9,7 @@ def index(request):
         form = Add_personal_massage(request.POST)
         if form.is_valid():
             massage = form.save(commit=False)
-            massage.student_id = request.user
+            massage.stu_id = request.user
             massage.save()
             return HttpResponseRedirect('/student_massage_show/')
             #return HttpResponse('success')#返回显示信息的主页
@@ -23,7 +23,7 @@ def index(request):
 #学生个人信息 查看 页面响应函数
 def student_massage_page(request):
     from .models import student_personal_massage
-    students = student_personal_massage.objects.filter(student_id=request.user)
+    students = student_personal_massage.objects.filter(stu_id=request.user)
     return render(request,'student/parsonal_passage_show.html',{'students':students})
 
 #家庭信息 查看 页面响应函数
