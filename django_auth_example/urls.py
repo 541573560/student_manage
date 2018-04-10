@@ -21,9 +21,9 @@ from student import views as s_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    # 别忘记在顶部引入 include 函数
     url(r'^users/', include('users.urls')),
     url(r'^users/', include('django.contrib.auth.urls')),
+    url(r'^academy/',include('academy_control.urls')),
     url(r'^$', views.index, name='index'),
     url(r'^student_massage_add/',s_views.index,name='ma_add'),
     url(r'^student_massage_show/',s_views.student_massage_page,name='stu_page'),

@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'bootstrapform',
     'users',
     'student',
-
+    'academy_control',
 ]
 
 MIDDLEWARE = [
