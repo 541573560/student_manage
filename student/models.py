@@ -22,7 +22,7 @@ class student_personal_massage(models.Model):
        verbose_name_plural = '学生基本信息填写'
 
     def __str__(self):
-        return self.student_id
+        return self.stu_id
 
     @property
     def Set_Status_Ture(self):
