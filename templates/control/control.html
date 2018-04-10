@@ -5,7 +5,38 @@
     <title>辅导员界面</title>
 </head>
 <body>
-{{ stu_grouop }}
-
+{% for student in stu_grouop %}
+    <table>
+    <thead>
+    <tr><th>学号<th>姓名<th>性别<th>家庭住址<th>学院<th>班级<th>学制<th>入学前户口<th>学制<th>政治面貌<th>高中毕业学校<th>高考总分<th>是否独生子女<th>入学前授课方式
+    <tbody>
+    <tr>
+    <td>{{ student.stu_id }}
+    <td>{{ student.name }}
+    <td>{{ student.sex }}
+    <td>{{ student.family_address }}
+    <td>{{ student.academy }}
+    <td>{{ student.class_num }}
+    <td>{{ student.train_level }}
+    <td>{{ student.registered_residence }}
+    <td>{{ student.length_of_schooling }}
+    <td>{{ student.Political_level }}
+    <td>{{ student.graduated_high_school }}
+    <td>{{ student.graduation_grades }}
+    <td>{{ student.single_kinds }}
+    <td>{{ student.study_way }}
+    <tr>
+</table>
+    <span href="#"><button>detilmassage</button></span>
+{#    <!-- /academy/{{ student.stu_id }}-->#}
+{% endfor %}
 </body>
+<style>
+    table{
+        border-collapse: collapse;
+    }
+    table,th,td{
+        border: 1px solid black;
+    }
+</style>
 </html>

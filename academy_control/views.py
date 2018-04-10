@@ -1,32 +1,38 @@
 from django.shortcuts import render
+from django.shortcuts import HttpResponse
 
-def page(request):
+def check_stu_massage(request):
     from student.models import student_personal_massage
-    if request.user == 'jisuanji':
+    user_name = str(request.user)
+    if user_name == 'jisuanji':
         student = student_personal_massage.objects.filter(academy__contains='计算机')
-        print('dwadwaad')
         return render(request, 'control/control.html', context={'stu_grouop': student})
-    elif request.user == 'guojiao':
+    elif user_name == 'guojiao':
         pass
-    elif request.user == 'jingjiguanli':
+    elif user_name == 'jingjiguanli':
         pass
-    elif request.user == 'jidian':
+    elif user_name == 'jidian':
         pass
-    elif request.user == 'cailiao':
+    elif user_name == 'cailiao':
         pass
-    elif request.user == 'huaxuegongcheng':
+    elif user_name == 'huaxuegongcheng':
         pass
-    elif request.user == 'huaxueshengming':
+    elif user_name == 'huaxueshengming':
         pass
-    elif request.user == 'yishusheji':
+    elif user_name == 'yishusheji':
         pass
-    elif request.user == 'renwen':
+    elif user_name == 'renwen':
         pass
-    elif request.user == 'makesi':
+    elif user_name == 'makesi':
         pass
-    elif request.user == 'jichu':
+    elif user_name == 'jichu':
         pass
-    elif request.user == 'waiguoyu':
+    elif user_name == 'waiguoyu':
         pass
-    elif request.user == 'yingyong':
+    elif user_name == 'yingyong':
         pass
+    else:
+        return HttpResponse('您尚未登录')
+
+def detil_massage():
+    pass

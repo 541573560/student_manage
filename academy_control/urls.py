@@ -4,6 +4,6 @@ from academy_control import views
 
 app_name = 'academy_control'
 
-urlpatterns = {
-    url()
-}
+urlpatterns = [
+    url(r'^massage',views.check_stu_massage,name='control_stu_mas'),
+]
