@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.shortcuts import HttpResponseRedirect
 
 #个人信息提交响应函数
