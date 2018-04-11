@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>详细信息</title>
+</head>
+<body>
+    {{ student.stu_id }}
+    {{ student.name }}
+    {{ student.sex }}
+    {{ student.family_address }}
+    {{ student.academy }}
+    {{ student.class_num }}
+    {{ student.train_level }}
+    {{ student.registered_residence }}
+    {{ student.length_of_schooling }}
+    {{ student.Political_level }}
+    {{ student.graduated_high_school }}
+    {{ student.graduation_grades }}
+    {{ student.single_kinds }}
+    {{ student.study_way }}
+    {{ student.status }}
+<br />
+{% for item in update %}
+    {{ item.Instructor_nmber }}
+    {{ item.Instructor }}
+    {{ item.poor_reason }}
+    {{ item.poor }}
+    {{ item.population }}
+    {{ item.party_member_application }}
+    {{ item.martyr }}
+    {{ item.orphan_disablity }}
+    {{ item.basic_living_allowances }}
+    {{ item.pareants_single }}
+    {{ item.phone_number }}
+    {{ item.living_room }}
+    {{ item.date }}
+{% endfor %}
+<br />
+{% for item2 in parent %}
+    {{ item2.name }}
+    {{ item2.relation_of_student }}
+    {{ item2.work_location }}
+    {{ item2.post }}
+    {{ item2.Political_level_p }}
+    {{ item2.phone_number }}
+{% endfor %}
+<br />
+{% for item3 in gratuate %}
+    {{ item3.date }}
+    {{ item3.gratudated }}
+    {{ item3.gratudated_reason }}
+    {{ item3.degree }}
+    {{ item3.degree_reason }}
+    {{ item3.back_xinjiang }}
+    {{ item3.employ_apartment }}
+    {{ item3.employ_apartment_manager }}
+    {{ item3.employ_apartment_phone }}
+{% endfor %}
+<br />
+
+</body>
+</html>
