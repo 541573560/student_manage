@@ -7,21 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
-{#zhuyi#}
-{#    <link rel="stylesheet" type="text/css" href="/static/css/normalize.css" media="all"/>#}
-{#	<link rel="stylesheet" type="text/css" href="/static/css/default.css" media="all">#}
-	<!-- //meta-tags -->
 	<link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<!-- font-awesome -->
 	<link href="/static/css/font-awesome.css" rel="stylesheet">
-{#    <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css">#}
-
-	<!-- fonts -->
-{#	<link href="http://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"#}
-{#	    rel="stylesheet">#}
-{#	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">#}
-
 </head>
 
 <body>
@@ -66,7 +54,6 @@
 							</h1>
 						</a>
 					</div>
-					<!--/.navbar-header-->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<nav class="link-effect-2" id="link-effect-2">
 							<ul class="nav navbar-nav">
@@ -85,9 +72,9 @@
 								<li>
 									<a href="{% url 'gr_show' %}" class="effect-3">毕业就业</a>
 								</li>
-								<!-- <li>
-									<a href="contact.html" class="effect-3">Contact Us</a>
-								</li> -->
+								<li>
+									<a href="{% url 'academy_control:control_stu_mas' %}" class="effect-3">辅导员界面</a>
+								</li>
 							</ul>
 						</nav>
 					</div>
@@ -95,12 +82,9 @@
 			</nav>
 		</div>
 	</div>
-	<!-- banner -->
 	<div class="inner_page_agile">
 
 	</div>
-	<!--//banner -->
-	<!-- short-->
 	<div class="services-breadcrumb">
 		<div class="inner_breadcrumb">
 			<ul class="short_ls">
@@ -112,7 +96,6 @@
 			</ul>
 		</div>
 	</div>
-	<!-- //short-->
 	<div class="register-form-main">
         {% block content%}
 		<div class="container">
@@ -153,8 +136,6 @@
 		</div>
         {% endblock %}
 	</div>
-
-	<!-- footer -->
 	<div class="mkl_footer">
 		<div class="sub-footer">
 			<div class="container">
@@ -184,31 +165,18 @@
 				</div>
 				<div class="botttom-nav-allah">
 				</div>
-				<!-- footer-button-info -->
 				<div class="footer-middle-thanks">
 					<h2>长春工业大学学生处</h2>
 				</div>
-				<!-- footer-button-info -->
 			</div>
 		</div>
 
 	</div>
-	<!--/footer -->
-
-	<!-- js files -->
-	<!-- js -->
 	<script src="/static/js/jquery-2.1.4.min.js"></script>
-{#    <script src="/static/js/jquery-1.11.0.min.js"></script>#}
-	<!-- bootstrap -->
 	<script src="/static/js/bootstrap.js"></script>
-	<!-- smooth scrolling -->
 	<script src="/static/js/SmoothScroll.min.js"></script>
 	<script src="/static/js/move-top.js"></script>
 	<script src="/static/js/easing.js"></script>
-	<!-- here stars scrolling icon -->
-	<!-- //password-script -->
-	<!-- //js-files -->
-
 </body>
 
 </html>

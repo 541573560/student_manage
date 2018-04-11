@@ -57,7 +57,7 @@ def check_stu_massage(request):
         require = student.filter(status=False).count()
         return render(request, 'control/control.html', context={'stu_grouop': student,'require':require})
     else:
-        return HttpResponse('您尚未登录')
+        return HttpResponse('您尚未登录 或 你不是辅导员')
 
 def detil_massage(request,stu_id):
     from student.models import student_personal_massage,parents,update_massage,gratudated_and_employ
