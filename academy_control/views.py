@@ -5,44 +5,57 @@ def check_stu_massage(request):
     from student.models import student_personal_massage
     user_name = str(request.user)
     if user_name == 'jisuanji':
-        student = student_personal_massage.objects.filter(academy__contains='计算机')
-        return render(request, 'control/control.html', context={'stu_grouop': student})
+        student = student_personal_massage.objects.filter(academy__contains='计算机').order_by('status')
+        require = student.filter(status=False).count()
+        return render(request, 'control/control.html', context={'stu_grouop': student,'require':require})
     elif user_name == 'guojiao':
-        student = student_personal_massage.objects.filter(academy__contains='国际教育')
-        return render(request, 'control/control.html', context={'stu_grouop': student})
+        student = student_personal_massage.objects.filter(academy__contains='国际教育').order_by('status')
+        require = student.filter(status=False).count()
+        return render(request, 'control/control.html', context={'stu_grouop': student,'require':require})
     elif user_name == 'jingjiguanli':
-        student = student_personal_massage.objects.filter(academy__contains='经济管理')
-        return render(request, 'control/control.html', context={'stu_grouop': student})
+        student = student_personal_massage.objects.filter(academy__contains='经济管理').order_by('status')
+        require = student.filter(status=False).count()
+        return render(request, 'control/control.html', context={'stu_grouop': student,'require':require})
     elif user_name == 'jidian':
-        student = student_personal_massage.objects.filter(academy__contains='机电')
-        return render(request, 'control/control.html', context={'stu_grouop': student})
+        student = student_personal_massage.objects.filter(academy__contains='机电').order_by('status')
+        require = student.filter(status=False).count()
+        return render(request, 'control/control.html', context={'stu_grouop': student,'require':require})
     elif user_name == 'cailiao':
-        student = student_personal_massage.objects.filter(academy__contains='材料')
-        return render(request, 'control/control.html', context={'stu_grouop': student})
+        student = student_personal_massage.objects.filter(academy__contains='材料').order_by('status')
+        require = student.filter(status=False).count()
+        return render(request, 'control/control.html', context={'stu_grouop': student,'require':require})
     elif user_name == 'huaxuegongcheng':
-        student = student_personal_massage.objects.filter(academy__contains='化学工程')
-        return render(request, 'control/control.html', context={'stu_grouop': student})
+        student = student_personal_massage.objects.filter(academy__contains='化学工程').order_by('status')
+        require = student.filter(status=False).count()
+        return render(request, 'control/control.html', context={'stu_grouop': student,'require':require})
     elif user_name == 'huaxueshengming':
-        student = student_personal_massage.objects.filter(academy__contains='化学与生命')
-        return render(request, 'control/control.html', context={'stu_grouop': student})
+        student = student_personal_massage.objects.filter(academy__contains='化学与生命').order_by('status')
+        require = student.filter(status=False).count()
+        return render(request, 'control/control.html', context={'stu_grouop': student,'require':require})
     elif user_name == 'yishusheji':
-        student = student_personal_massage.objects.filter(academy__contains='艺术')
-        return render(request, 'control/control.html', context={'stu_grouop': student})
+        student = student_personal_massage.objects.filter(academy__contains='艺术').order_by('status')
+        require = student.filter(status=False).count()
+        return render(request, 'control/control.html', context={'stu_grouop': student,'require':require})
     elif user_name == 'renwen':
-        student = student_personal_massage.objects.filter(academy__contains='人文')
-        return render(request, 'control/control.html', context={'stu_grouop': student})
+        student = student_personal_massage.objects.filter(academy__contains='人文').order_by('status')
+        require = student.filter(status=False).count()
+        return render(request, 'control/control.html', context={'stu_grouop': student,'require':require})
     elif user_name == 'makesi':
-        student = student_personal_massage.objects.filter(academy__contains='马克思')
-        return render(request, 'control/control.html', context={'stu_grouop': student})
+        student = student_personal_massage.objects.filter(academy__contains='马克思').order_by('status')
+        require = student.filter(status=False).count()
+        return render(request, 'control/control.html', context={'stu_grouop': student,'require':require})
     elif user_name == 'jichu':
-        student = student_personal_massage.objects.filter(academy__contains='基础')
-        return render(request, 'control/control.html', context={'stu_grouop': student})
+        student = student_personal_massage.objects.filter(academy__contains='基础').order_by('status')
+        require = student.filter(status=False).count()
+        return render(request, 'control/control.html', context={'stu_grouop': student,'require':require})
     elif user_name == 'waiguoyu':
-        student = student_personal_massage.objects.filter(academy__contains='外国语')
-        return render(request, 'control/control.html', context={'stu_grouop': student})
+        student = student_personal_massage.objects.filter(academy__contains='外国语').order_by('status')
+        require = student.filter(status=False).count()
+        return render(request, 'control/control.html', context={'stu_grouop': student,'require':require})
     elif user_name == 'yingyong':
-        student = student_personal_massage.objects.filter(academy__contains='应用')
-        return render(request, 'control/control.html', context={'stu_grouop': student})
+        student = student_personal_massage.objects.filter(academy__contains='应用').order_by('status')
+        require = student.filter(status=False).count()
+        return render(request, 'control/control.html', context={'stu_grouop': student,'require':require})
     else:
         return HttpResponse('您尚未登录')
 

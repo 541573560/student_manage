@@ -20,6 +20,7 @@
     {{ student.single_kinds }}
     {{ student.study_way }}
     {{ student.status }}
+    <a href="#">修改信息</a>
 <br />
 {% for item in update %}
     {{ item.Instructor_nmber }}
@@ -35,6 +36,10 @@
     {{ item.phone_number }}
     {{ item.living_room }}
     {{ item.date }}
+    <a href="#">修改信息</a>
+    <br />
+
+
 {% endfor %}
 <br />
 {% for item2 in parent %}
@@ -44,6 +49,9 @@
     {{ item2.post }}
     {{ item2.Political_level_p }}
     {{ item2.phone_number }}
+    <a href="#">修改信息</a>
+    <br />
+
 {% endfor %}
 <br />
 {% for item3 in gratuate %}
@@ -56,8 +64,11 @@
     {{ item3.employ_apartment }}
     {{ item3.employ_apartment_manager }}
     {{ item3.employ_apartment_phone }}
+    <a href="#">修改信息</a>
+    <br />
 {% endfor %}
 <br />
 
+<button onclick="window.location.href='/academy/massage/';{{ student.Set_Status_Ture }}">通过审核</button>
 </body>
 </html>
