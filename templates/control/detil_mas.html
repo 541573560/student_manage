@@ -1,195 +1,925 @@
-<!DOCTYPE html>
-<html lang="zh-han">
-<head>
-    {% load static %}
-	<title>详细信息</title>
-	<!-- meta-tags -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="" />
-	<link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="/static/css/font-awesome.css" rel="stylesheet">
-
-</head>
-
-<body>
-	<div class="header-top">
-		<div class="container">
-			<div class="bottom_header_left">
-				<p>
-					<span class="fa fa-map-marker" aria-hidden="true"></span>长春, CHINA
-				</p>
-			</div>
-			<div class="bottom_header_right">
-				<div class="header-top-righ">
-					<a href="{% url 'login' %}">
-						<span class="fa fa-sign-out" aria-hidden="true"></span>登录</a>
-				</div>
-
-				<div class="header-top-righ">
-                    <a href="{% url 'logout' %}">
-                        <span class="fa fa-sign-out">注销</span>
-                    </a>
-                </div>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-	<div class="header">
-		<div class="content white">
-			<nav class="navbar navbar-default">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="#">
-							<h1>
-								<span class="fa fa-leanpub" aria-hidden="true"></span>长春工业大学
-								<label>少数民族学生信息管理系统</label>
-							</h1>
-						</a>
-					</div>
-					<!--/.navbar-header-->
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<nav class="link-effect-2" id="link-effect-2">
-							<ul class="nav navbar-nav">
-								<li>
-									<a href="{% url 'index' %}" class="effect-3">主页</a>
-								</li>
-								<li>
-									<a href="{% url 'stu_page' %}" class="effect-3">个人信息</a>
-								</li>
-								<li>
-									<a href="{% url 'p_show' %}" class="effect-3">家庭信息</a>
-								</li>
-								<li>
-									<a href="{% url 'up_show' %}" class="effect-3">年度信息</a>
-								</li>
-								<li>
-									<a href="{% url 'gr_show' %}" class="effect-3">毕业就业</a>
-								</li>
-								<li>
-									<a href="{% url 'academy_control:control_stu_mas' %}" class="effect-3">辅导员界面</a>
-								</li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</div>
-	<div class="register-form-main">
-        <h4>学号： {{ student.stu_id }}
-            &nbsp姓名：{{ student.name }}
-            &nbsp性别：{{ student.sex }}
-            &nbsp家庭住址：{{ student.family_address }}
-            &nbsp学院：{{ student.academy }}
-            &nbsp班级：{{ student.class_num }}
-            &nbsp学制：{{ student.train_level }}
-            &nbsp入学前户口：{{ student.registered_residence }}
-            &nbsp学制：{{ student.length_of_schooling }}
-            &nbsp政治面貌：{{ student.Political_level }}
-            &nbsp高中毕业学校：{{ student.graduated_high_school }}
-            &nbsp高考成绩：{{ student.graduation_grades }}
-            &nbsp是否独生子女：{{ student.single_kinds }}
-            &nbsp入学前授课方式：{{ student.study_way }}
-            &nbsp是否审核{{ student.status }}
-        </h4>
-        <a href="#">修改信息</a>
-        <br />
-        {% for item in update %}
-        {{ item.Instructor_nmber }}
-        {{ item.Instructor }}
-        {{ item.poor_reason }}
-        {{ item.poor }}
-        {{ item.population }}
-        {{ item.party_member_application }}
-        {{ item.martyr }}
-        {{ item.orphan_disablity }}
-        {{ item.basic_living_allowances }}
-        {{ item.pareants_single }}
-        {{ item.phone_number }}
-        {{ item.living_room }}
-        {{ item.date }}
-        <a href="#">修改信息</a>
-        <br />
-        {% endfor %}
-        <br />
-        {% for item2 in parent %}
-        {{ item2.name }}
-        {{ item2.relation_of_student }}
-        {{ item2.work_location }}
-        {{ item2.post }}
-        {{ item2.Political_level_p }}
-        {{ item2.phone_number }}
-        <a href="#">修改信息</a>
-        <br />
-        {% endfor %}
-        <br />
-        {% for item3 in gratuate %}
-        {{ item3.date }}
-        {{ item3.gratudated }}
-        {{ item3.gratudated_reason }}
-        {{ item3.degree }}
-        {{ item3.degree_reason }}
-        {{ item3.back_xinjiang }}
-        {{ item3.employ_apartment }}
-        {{ item3.employ_apartment_manager }}
-        {{ item3.employ_apartment_phone }}
-        <a href="#">修改信息</a>
-        <br />
-        {% endfor %}
-        <br />
-        <button onclick="window.location.href='/academy/massage/';{{ student.Set_Status_Ture }}">通过审核</button>
-	</div>
-	<div class="mkl_footer">
-		<div class="sub-footer">
-			<div class="container">
-				<div class="mkls_footer_grid">
-					<div class="col-xs-4 mkls_footer_grid_left">
-						<h4>Location:</h4>
-						<p>延安大街2055号长春工业大学,
-							<br> 长春, CHINA</p>
-					</div>
-					<div class="col-xs-4 mkls_footer_grid_left">
-						<h4>Mail Us:</h4>
-						<p>
-							<span>Phone : </span>001 234 5678</p>
-						<p>
-							<span>Email : </span>
-							<a href="mailto:info@example.com">mail@example.com</a>
-						</p>
-					</div>
-					<div class="col-xs-4 mkls_footer_grid_left">
-                        <h4>Created by:</h4>
-						<p>计算机科学与工程学院</p>
-						<p>
-							<span><a href="https://github.com/541573560">harry</a>&<a href="https://github.com/JackJinSong">Jack jin song</a></span>
-						</p>>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="botttom-nav-allah">
-				</div>
-				<div class="footer-middle-thanks">
-					<h2>长春工业大学学生处</h2>
-				</div>
-			</div>
-		</div>
-
-	</div>
-	<script src="/static/js/jquery-2.1.4.min.js"></script>
-	<script src="/static/js/bootstrap.js"></script>
-	<script src="/static/js/SmoothScroll.min.js"></script>
-	<script src="/static/js/move-top.js"></script>
-	<script src="/static/js/easing.js"></script>
-</body>
-
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="ProgId" content="Excel.Sheet"/>
+  <meta name="Generator" content="WPS Office ET"/>
+  <style>
+<!-- @page
+	{margin:0.98in 0.75in 0.98in 0.75in;
+	mso-header-margin:0.51in;
+	mso-footer-margin:0.51in;}
+tr
+	{mso-height-source:auto;
+	mso-ruby-visibility:none;}
+col
+	{mso-width-source:auto;
+	mso-ruby-visibility:none;}
+br
+	{mso-data-placement:same-cell;}
+.font0
+	{color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font1
+	{color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font2
+	{color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font3
+	{color:#44546A;
+	font-size:13.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font4
+	{color:#FF0000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font5
+	{color:#7F7F7F;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:italic;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font6
+	{color:#44546A;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font7
+	{color:#800080;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font8
+	{color:#9C0006;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font9
+	{color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font10
+	{color:#3F3F3F;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font11
+	{color:#44546A;
+	font-size:15.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font12
+	{color:#000000;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font13
+	{color:#44546A;
+	font-size:18.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font14
+	{color:#0000FF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font15
+	{color:#9C6500;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font16
+	{color:#3F3F76;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font17
+	{color:#006100;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font18
+	{color:#FA7D00;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font19
+	{color:#FA7D00;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.style0
+	{mso-number-format:"General";
+	text-align:general;
+	vertical-align:middle;
+	white-space:nowrap;
+	mso-rotate:0;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:134;
+	border:none;
+	mso-protection:locked visible;
+	mso-style-name:"常规";
+	mso-style-id:0;}
+.style16
+	{mso-number-format:"_ \\¥* \#\,\#\#0_ \;_ \\¥* \\-\#\,\#\#0_ \;_ \\¥* \0022-\0022_ \;_ \@_ ";
+	mso-style-name:"货币[0]";
+	mso-style-id:7;}
+.style17
+	{mso-pattern:auto none;
+	background:#EDEDED;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"20% - 强调文字颜色 3";}
+.style18
+	{mso-pattern:auto none;
+	background:#FFCC99;
+	color:#3F3F76;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	border:.5pt solid #7F7F7F;
+	mso-style-name:"输入";}
+.style19
+	{mso-number-format:"_ \\¥* \#\,\#\#0\.00_ \;_ \\¥* \\-\#\,\#\#0\.00_ \;_ \\¥* \0022-\0022??_ \;_ \@_ ";
+	mso-style-name:"货币";
+	mso-style-id:4;}
+.style20
+	{mso-number-format:"_ * \#\,\#\#0_ \;_ * \\-\#\,\#\#0_ \;_ * \0022-\0022_ \;_ \@_ ";
+	mso-style-name:"千位分隔[0]";
+	mso-style-id:6;}
+.style21
+	{mso-pattern:auto none;
+	background:#DBDBDB;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"40% - 强调文字颜色 3";}
+.style22
+	{mso-pattern:auto none;
+	background:#FFC7CE;
+	color:#9C0006;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"差";}
+.style23
+	{mso-number-format:"_ * \#\,\#\#0\.00_ \;_ * \\-\#\,\#\#0\.00_ \;_ * \0022-\0022??_ \;_ \@_ ";
+	mso-style-name:"千位分隔";
+	mso-style-id:3;}
+.style24
+	{mso-pattern:auto none;
+	background:#C9C9C9;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"60% - 强调文字颜色 3";}
+.style25
+	{color:#0000FF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"超链接";
+	mso-style-id:8;}
+.style26
+	{mso-number-format:"0%";
+	mso-style-name:"百分比";
+	mso-style-id:5;}
+.style27
+	{color:#800080;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"已访问的超链接";
+	mso-style-id:9;}
+.style28
+	{mso-pattern:auto none;
+	background:#FFFFCC;
+	border:.5pt solid #B2B2B2;
+	mso-style-name:"注释";}
+.style29
+	{mso-pattern:auto none;
+	background:#F4B084;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"60% - 强调文字颜色 2";}
+.style30
+	{color:#44546A;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:134;
+	mso-style-name:"标题 4";}
+.style31
+	{color:#FF0000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"警告文本";}
+.style32
+	{color:#44546A;
+	font-size:18.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:134;
+	mso-style-name:"标题";}
+.style33
+	{color:#7F7F7F;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:italic;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"解释性文本";}
+.style34
+	{color:#44546A;
+	font-size:15.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:134;
+	border-bottom:1.0pt solid #5B9BD5;
+	mso-style-name:"标题 1";}
+.style35
+	{color:#44546A;
+	font-size:13.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:134;
+	border-bottom:1.0pt solid #5B9BD5;
+	mso-style-name:"标题 2";}
+.style36
+	{mso-pattern:auto none;
+	background:#9BC2E6;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"60% - 强调文字颜色 1";}
+.style37
+	{color:#44546A;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:134;
+	border-bottom:1.0pt solid #ACCCEA;
+	mso-style-name:"标题 3";}
+.style38
+	{mso-pattern:auto none;
+	background:#FFD966;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"60% - 强调文字颜色 4";}
+.style39
+	{mso-pattern:auto none;
+	background:#F2F2F2;
+	color:#3F3F3F;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	border:.5pt solid #3F3F3F;
+	mso-style-name:"输出";}
+.style40
+	{mso-pattern:auto none;
+	background:#F2F2F2;
+	color:#FA7D00;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	border:.5pt solid #7F7F7F;
+	mso-style-name:"计算";}
+.style41
+	{mso-pattern:auto none;
+	background:#A5A5A5;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	border:2.0pt double #3F3F3F;
+	mso-style-name:"检查单元格";}
+.style42
+	{mso-pattern:auto none;
+	background:#E2EFDA;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"20% - 强调文字颜色 6";}
+.style43
+	{mso-pattern:auto none;
+	background:#ED7D31;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"强调文字颜色 2";}
+.style44
+	{color:#FA7D00;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	border-bottom:2.0pt double #FF8001;
+	mso-style-name:"链接单元格";}
+.style45
+	{color:#000000;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	border-top:.5pt solid #5B9BD5;
+	border-bottom:2.0pt double #5B9BD5;
+	mso-style-name:"汇总";}
+.style46
+	{mso-pattern:auto none;
+	background:#C6EFCE;
+	color:#006100;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"好";}
+.style47
+	{mso-pattern:auto none;
+	background:#FFEB9C;
+	color:#9C6500;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"适中";}
+.style48
+	{mso-pattern:auto none;
+	background:#D9E1F2;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"20% - 强调文字颜色 5";}
+.style49
+	{mso-pattern:auto none;
+	background:#5B9BD5;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"强调文字颜色 1";}
+.style50
+	{mso-pattern:auto none;
+	background:#DDEBF7;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"20% - 强调文字颜色 1";}
+.style51
+	{mso-pattern:auto none;
+	background:#BDD7EE;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"40% - 强调文字颜色 1";}
+.style52
+	{mso-pattern:auto none;
+	background:#FCE4D6;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"20% - 强调文字颜色 2";}
+.style53
+	{mso-pattern:auto none;
+	background:#F8CBAD;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"40% - 强调文字颜色 2";}
+.style54
+	{mso-pattern:auto none;
+	background:#A5A5A5;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"强调文字颜色 3";}
+.style55
+	{mso-pattern:auto none;
+	background:#FFC000;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"强调文字颜色 4";}
+.style56
+	{mso-pattern:auto none;
+	background:#FFF2CC;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"20% - 强调文字颜色 4";}
+.style57
+	{mso-pattern:auto none;
+	background:#FFE699;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"40% - 强调文字颜色 4";}
+.style58
+	{mso-pattern:auto none;
+	background:#4472C4;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"强调文字颜色 5";}
+.style59
+	{mso-pattern:auto none;
+	background:#B4C6E7;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"40% - 强调文字颜色 5";}
+.style60
+	{mso-pattern:auto none;
+	background:#8EA9DB;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"60% - 强调文字颜色 5";}
+.style61
+	{mso-pattern:auto none;
+	background:#70AD47;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"强调文字颜色 6";}
+.style62
+	{mso-pattern:auto none;
+	background:#C6E0B4;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"40% - 强调文字颜色 6";}
+.style63
+	{mso-pattern:auto none;
+	background:#A9D08E;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"60% - 强调文字颜色 6";}
+td
+	{mso-style-parent:style0;
+	padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	mso-number-format:"General";
+	text-align:general;
+	vertical-align:middle;
+	white-space:nowrap;
+	mso-rotate:0;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:134;
+	border:none;
+	mso-protection:locked visible;}
+.xl65
+	{mso-style-parent:style0;
+	text-align:center;
+	mso-font-charset:134;
+	border:.5pt solid windowtext;}
+ -->  </style>
+  <!--[if gte mso 9]>
+   <xml>
+    <x:ExcelWorkbook>
+     <x:ExcelWorksheets>
+      <x:ExcelWorksheet>
+       <x:Name>Sheet1</x:Name>
+       <x:WorksheetOptions>
+        <x:DefaultRowHeight>270</x:DefaultRowHeight>
+        <x:Selected/>
+        <x:TopRowVisible>21</x:TopRowVisible>
+        <x:Panes>
+         <x:Pane>
+          <x:Number>3</x:Number>
+          <x:ActiveCol>0</x:ActiveCol>
+          <x:ActiveRow>30</x:ActiveRow>
+          <x:RangeSelection>A31:I48</x:RangeSelection>
+         </x:Pane>
+        </x:Panes>
+        <x:ProtectContents>False</x:ProtectContents>
+        <x:ProtectObjects>False</x:ProtectObjects>
+        <x:ProtectScenarios>False</x:ProtectScenarios>
+        <x:PageBreakZoom>100</x:PageBreakZoom>
+        <x:Print>
+         <x:PaperSizeIndex>9</x:PaperSizeIndex>
+        </x:Print>
+       </x:WorksheetOptions>
+      </x:ExcelWorksheet>
+     </x:ExcelWorksheets>
+     <x:ProtectStructure>False</x:ProtectStructure>
+     <x:ProtectWindows>False</x:ProtectWindows>
+     <x:SelectedSheets>0</x:SelectedSheets>
+     <x:WindowHeight>10350</x:WindowHeight>
+     <x:WindowWidth>23895</x:WindowWidth>
+    </x:ExcelWorkbook>
+   </xml>
+  <![endif]-->
+ </head>
+ <body link="blue" vlink="purple">
+  <table width="648" border="0" cellpadding="0" cellspacing="0" style='width:486.00pt;border-collapse:collapse;table-layout:fixed;'>
+   <col width="72" span="9" style='mso-width-source:userset;mso-width-alt:2304;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" width="648" colspan="9" rowspan="2" style='height:27.00pt;width:486.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>学生信息总览</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>学号</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ student.stu_id }}</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>姓名</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ student.name }}</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>家庭住址</td>
+    <td class="xl65" colspan="3" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ student.family_address }}</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>学院</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ student.academy }}</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>班级</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ student.class_num }}</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>学制</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ student.train_level }}</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>班级</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ student.class_num }}</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>学制</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ student.study_way }}</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>入学前户口</td>
+    <td class="xl65" colspan="3" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ student.registered_residence }}</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>政治面貌</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ student.Political_level }}</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" colspan="2" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>高中毕业学校</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ student.graduated_high_school }}</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>高考总分</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ student.graduation_grades }}</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>是否独生子女</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ student.single_kinds }}</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" colspan="2" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>入学前授课方式</td>
+    <td class="xl65" colspan="7" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ student.study_way }}</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+      {% for family in parent %}
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" colspan="9" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>家庭信息</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>姓名</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ family.name }}</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>与本人关系</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ family.relation_of_student }}</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>工作单位</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ family.work_location }}</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>政治面貌</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ family.Political_level_p }}</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>联系电话</td>
+    <td class="xl65" colspan="4" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ family.phone_number }}</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+      {% endfor %}
+  {% for years in update %}
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" colspan="9" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>年度信息</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>所在宿舍</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ years.living_room }}</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>日期</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ years.date }}</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>联系电话</td>
+    <td class="xl65" colspan="3" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ years.phone_number }}</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" colspan="2" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>是否单亲家庭</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ years.pareants_single }}</td>
+    <td class="xl65" colspan="3" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>是否拥有城市/农村审核保障</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ years.basic_living_allowances }}</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>是否孤残</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ years.orphan_disablity }}</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" colspan="2" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>是否烈士子女</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ years.martyr }}</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>是否党员</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ years.party_member }}</td>
+    <td class="xl65" colspan="3" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>是否递交入党申请书</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ years.party_member_application }}</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" colspan="2" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>家庭人口数</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ years.population }}</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>家庭是否困难</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ years.poor }}</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>原因</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ years.poor_reason }}</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>辅导员姓名</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ years.Instructor }}</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>辅导员联系电话</td>
+    <td class="xl65" colspan="4" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ years.Instructor_nmber }}</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+  {% endfor %}
+  {% for items in gratuate %}
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" colspan="9" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>毕业就业</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>是否毕业</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ items.gratudated }}</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>未毕业原因</td>
+    <td class="xl65" colspan="5" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ items.gratudated_reason }}</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" colspan="2" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>是否授予学位</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ items.degree }}</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>未授予学位原因</td>
+    <td class="xl65" colspan="4" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ items.degree_reason }}</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" colspan="2" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>是否返回新疆</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ items.back_xinjiang }}</td>
+    <td class="xl65" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>就业单位</td>
+    <td class="xl65" colspan="5" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ items.employ_apartment }}</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="36" colspan="2" rowspan="2" style='height:27.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>就业单位联系人</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ items.employ_apartment_manager }}</td>
+    <td class="xl65" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>就业单位联系电话</td>
+    <td class="xl65" colspan="3" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>{{ items.employ_apartment_phone }}</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'/>
+   {% endfor %}
+   <![if supportMisalignedColumns]>
+    <tr width="0" style='display:none;'>
+     <td width="72" style='width:54;'></td>
+    </tr>
+   <![endif]>
+  </table>
+  <div>
+      <button onclick="window.location.href='/academy/massage/';{{ student.Set_Status_Ture }}">通过审核</button>
+  </div>
+ </body>
 </html>
-
-
